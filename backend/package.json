@@ -4,9 +4,9 @@
     "description": "",
     "main": "src/server.js",
     "scripts": {
-        "build": "tsc",
+        "build": "PowerShell -Command \"Remove-Item -Path .\\build -Recurse -Force; tsc\"",
         "start": "node build/server.js",
-        "dev": "nodemon build/server.js" 
+        "dev": "nodemon build/server.js"
     },
     "author": "",
     "license": "ISC",
