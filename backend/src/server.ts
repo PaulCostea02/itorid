@@ -4,8 +4,8 @@ import mongoose from 'mongoose';
 
 import { config } from './config/config';
 import Logging from './library/Logging';
-import express from 'express';
 import userRoutes from './routes/User';
+import restaurantRoutes from './routes/Restaurant';
 
 const router = expess();
 // Connect to Mongo
@@ -47,7 +47,10 @@ const StartServer = () => {
         next();
     });
     //Routes
+
     router.use('/user', userRoutes);
+    router.use('/restaurant', restaurantRoutes);
+
     //test
     router.get('/ping', (req, res, next) => res.status(200).json({ message: 'pong' }));
 
