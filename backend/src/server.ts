@@ -6,6 +6,9 @@ import { config } from './config/config';
 import Logging from './library/Logging';
 import userRoutes from './routes/User';
 import restaurantRoutes from './routes/Restaurant';
+import orderRoutes from './routes/Order';
+import menuRoutes from './routes/Menu';
+import authRoutes from './routes/Auth';
 
 const router = expess();
 // Connect to Mongo
@@ -47,14 +50,16 @@ const StartServer = () => {
         next();
     });
     //Routes
-
+    router.use(authRoutes);
     router.use('/user', userRoutes);
     router.use('/restaurant', restaurantRoutes);
+    router.use('/order', orderRoutes);
+    router.use('/menu', menuRoutes);
 
     //test
     router.get('/ping', (req, res, next) => res.status(200).json({ message: 'pong' }));
 
-    //Error handling
+    // ERORR HANDLER NEAPARAT TREBUIE SA MA APUC SA IL FAC
     router.use((req, res, next) => {
         const error = new Error('not found');
         Logging.error(error);

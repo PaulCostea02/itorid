@@ -1,5 +1,4 @@
 import mongoose, { Document, Schema } from "mongoose";
-import User from "../controllers/User";
 import { userPreSaveMiddleware } from "../middleware/User";
 
 export interface IUser {
